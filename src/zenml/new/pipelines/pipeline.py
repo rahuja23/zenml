@@ -75,7 +75,7 @@ from zenml.new.pipelines.run_utils import (
     prepare_model_versions,
 )
 from zenml.stack import Stack
-from zenml.cli.utils import temporary_active_stack
+from zenml.stack.utils import temporary_active_stack
 from zenml.steps import BaseStep
 from zenml.steps.entrypoint_function_utils import (
     StepArtifact,

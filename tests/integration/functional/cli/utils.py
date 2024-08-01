@@ -16,10 +16,8 @@ from typing import Generator, Optional, Tuple
 
 from tests.harness.harness import TestHarness
 from zenml.cli import cli
-from zenml.cli.utils import (
-    parse_name_and_extra_arguments,
-    temporary_active_stack,
-)
+from zenml.cli.utils import parse_name_and_extra_arguments
+from zenml.stack.utils import temporary_active_stack
 from zenml.client import Client
 from zenml.models import (
     TagFilter,

@@ -16,7 +16,7 @@
 import json
 import os
 from typing import Any, Dict, Optional, Union
-
+from zenml.stack.utils import temporary_active_stack
 import click
 
 from zenml.cli import utils as cli_utils
@@ -193,7 +193,7 @@ def build_pipeline(
             "object."
         )
 
-    with cli_utils.temporary_active_stack(stack_name_or_id=stack_name_or_id):
+    with temporary_active_stack(stack_name_or_id=stack_name_or_id):
         pipeline_instance = pipeline_instance.with_options(
             config_path=config_path
         )
@@ -306,7 +306,7 @@ def run_pipeline(
                 "or file path."
             )
 
-    with cli_utils.temporary_active_stack(stack_name_or_id=stack_name_or_id):
+    with temporary_active_stack(stack_name_or_id=stack_name_or_id):
         pipeline_instance = pipeline_instance.with_options(
             config_path=config_path,
             build=build,
