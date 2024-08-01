@@ -161,11 +161,11 @@ class stack_context:
     ) -> None:
         """Get a stack component flavor by name and type from a ZenStore.
         Args:
-            exception_type: Type of the execption that was raised.
-            None if no execption.
+            exception_type: Type of the exception that was raised.
+            None if no exception.
             exception_value: Type of exception that was raised.
             e.g., divide_by_zero error. None if no exception.
-            traceback: Traceback report. None if no excpetion.
+            traceback: Traceback report. None if no exception.
         """
         if self._default_stack.id != Client().active_stack:
             Client().activate_stack(self._default_stack.id)
