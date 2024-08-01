@@ -274,6 +274,7 @@ def test_pipeline_build_with_config_file(
         == "custom_parent_image"
     )
 
+
 def test_pipeline_run_with_different_stack_in_config_file(
     clean_client: "Client", tmp_path
 ):

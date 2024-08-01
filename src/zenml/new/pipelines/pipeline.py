@@ -75,7 +75,7 @@ from zenml.new.pipelines.run_utils import (
     prepare_model_versions,
 )
 from zenml.stack import Stack
-from zenml.stack.utils import  stack_context
+from zenml.stack.utils import stack_context
 from zenml.steps import BaseStep
 from zenml.steps.entrypoint_function_utils import (
     StepArtifact,
@@ -519,7 +519,7 @@ To avoid this consider setting pipeline parameters only in one place (config or 
             The build output.
         """
         with track_handler(
-                event=AnalyticsEvent.BUILD_PIPELINE
+            event=AnalyticsEvent.BUILD_PIPELINE
         ), stack_context():
             self._prepare_if_possible()
             deployment, _, _ = self._compile(
@@ -603,7 +603,9 @@ To avoid this consider setting pipeline parameters only in one place (config or 
 
         logger.info(f"Initiating a new run for the pipeline: `{self.name}`.")
 
-        with track_handler(AnalyticsEvent.RUN_PIPELINE) as analytics_handler, stack_context():
+        with track_handler(
+            AnalyticsEvent.RUN_PIPELINE
+        ) as analytics_handler, stack_context():
             deployment, schedule, build = self._compile(
                 config_path=config_path,
                 run_name=run_name,
@@ -1398,10 +1400,10 @@ To avoid this consider setting pipeline parameters only in one place (config or 
                 )
             else:
                 self.prepare()
+
     def _update_stack_from_config(
-    self,
-    run_configuration: PipelineRunConfiguration
-                          ) -> None:
+        self, run_configuration: PipelineRunConfiguration
+    ) -> None:
         """
         Activate the stack from the pipeline run configuration if one is given.
 
