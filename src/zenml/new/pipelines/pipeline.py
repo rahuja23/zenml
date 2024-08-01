@@ -75,7 +75,7 @@ from zenml.new.pipelines.run_utils import (
     prepare_model_versions,
 )
 from zenml.stack import Stack
-from zenml.stack.utils import stack_context
+from zenml.cli.utils import temporary_active_stack
 from zenml.steps import BaseStep
 from zenml.steps.entrypoint_function_utils import (
     StepArtifact,
@@ -520,7 +520,7 @@ To avoid this consider setting pipeline parameters only in one place (config or 
         """
         with track_handler(
             event=AnalyticsEvent.BUILD_PIPELINE
-        ), stack_context():
+        ), temporary_active_stack():
             self._prepare_if_possible()
             deployment, _, _ = self._compile(
                 config_path=config_path,
@@ -605,7 +605,7 @@ To avoid this consider setting pipeline parameters only in one place (config or 
 
         with track_handler(
             AnalyticsEvent.RUN_PIPELINE
-        ) as analytics_handler, stack_context():
+        ) as analytics_handler,temporary_active_stack():
             deployment, schedule, build = self._compile(
                 config_path=config_path,
                 run_name=run_name,
